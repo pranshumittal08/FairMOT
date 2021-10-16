@@ -91,7 +91,7 @@ class Model(nn.Module):
         for m in self.model:
             if m.f != -1:  # if not from previous layer
                 x = y[m.f] if isinstance(m.f, int) else [x if j == -1 else y[j] for j in m.f]  # from earlier layers
-
+            print(x)
             x = m(x)  # run
             y.append(x if m.i in self.save else None)  # save output
 
