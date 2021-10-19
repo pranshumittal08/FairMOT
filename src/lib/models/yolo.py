@@ -174,9 +174,9 @@ class PoseYOLOv5l6(nn.Module):
         for head in sorted(self.heads):
             num_output = self.heads[head]
             fc = nn.Sequential(
-                nn.Conv2d(1024, 256, kernel_size=3, padding=1, bias=True),
+                nn.Conv2d(128, 128, kernel_size=3, padding=1, bias=True),
                 nn.SiLU(),
-                nn.Conv2d(256, num_output, kernel_size=1, stride=1, padding=0))
+                nn.Conv2d(128, num_output, kernel_size=1, stride=1, padding=0))
             self.__setattr__(head, fc)
             if 'hm' in head:
                 fc[-1].bias.data.fill_(-2.19)
@@ -198,9 +198,9 @@ class PoseYOLOv5x6(nn.Module):
         for head in sorted(self.heads):
             num_output = self.heads[head]
             fc = nn.Sequential(
-                nn.Conv2d(1024, 512, kernel_size=3, padding=1, bias=True),
+                nn.Conv2d(160, 160, kernel_size=3, padding=1, bias=True),
                 nn.SiLU(),
-                nn.Conv2d(512, num_output, kernel_size=1, stride=1, padding=0))
+                nn.Conv2d(160, num_output, kernel_size=1, stride=1, padding=0))
             self.__setattr__(head, fc)
             if 'hm' in head:
                 fc[-1].bias.data.fill_(-2.19)
